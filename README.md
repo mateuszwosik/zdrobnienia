@@ -61,8 +61,7 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  35. **-uń** - np. tatuń
  36. **-unia, -unio** - np. mamunia, tatunio
  37. **-as** - np. poufale Juras od Jurek
-
-Do tworzenia zdrobnień do przymiotników i przysłówków służą następujące sufiksy:
+ Do tworzenia zdrobnień do przymiotników i przysłówków służą następujące sufiksy:
  38. **-eńki** - np. maleńki
  39. **-enieńki** - np. malenieńki
  40. **-uni** - np. maluni
