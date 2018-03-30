@@ -32,14 +32,14 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  11. [ ] **-ch** - np. Stach
  12. [ ] **-cha** - np. Kacha
  13. [ ] **-isz** - format wyabstrachowany, np. Bronisz
-    - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-iszek**, np. braciszek
-    - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-yszek**, np. kamyszek
+     - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-iszek**, np. braciszek
+     - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-yszek**, np. kamyszek
  14. [ ] **-osz** - format wyabstrachowany, np. Miłosz
-    - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-aszek**, np. Łukaszek
-    - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-oszek**, np. chleboszek
+     - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-aszek**, np. Łukaszek
+     - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-oszek**, np. chleboszek
  15. [ ] **-usz** - format wyabstrachowany, np. Matusz
-    - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-uszek**, np. kwiatuszek, (kaczuszka, serduszko)
-    - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-uszczek**
+     - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-uszek**, np. kwiatuszek, (kaczuszka, serduszko)
+     - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-uszczek**
  16. [X] **-ę** - używana do dalszego spieszczania np. cielę, dziewczę, a kolejno **-ko**, np. cielątko, dziewczątko, a następnie **-czko**, np. dziewcząteczko, paniąteczko
  17. [ ] **-ączko** - np. ączko
  18. [X] **-eńko** - np. serdeńko
