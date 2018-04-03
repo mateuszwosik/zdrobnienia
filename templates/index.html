@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    HOME
+<form action="{{ url_for('index') }}" method="post">
+    <textarea rows="10" cols="80" name="">Tekścik do wyszukania zdrobnień.</textarea></br>
+    <input type="submit" value="Wyszukaj">
+</form>
 {% endblock %}
