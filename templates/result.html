@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+Znalezione zdrobnienia:</br>
+<ul>
+{% for diminutive in diminutives %}
+    <li> {{ diminutive }} </li>
+{% endfor %}
+</ul>
+{% endblock %}
