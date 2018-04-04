@@ -13,8 +13,13 @@ def findDiminutives(text):
         word = word.strip(" \".,?!")
         for ending in nouns_ending:
             if word.endswith(ending):
+                diminutive = {}
+                diminutive["word"] = word
+                diminutive["type"] = "rzeczownik"
+                diminutive["ending"] = ending
+                
                 quote_page = "https://sjp.pl/" + quote(word)
-
+                
                 print()
                 print(quote_page)
                 page = urlopen(quote_page)
@@ -22,14 +27,20 @@ def findDiminutives(text):
                 name_box = soup.findAll('p', style="margin: .5em 0; font: medium/1.4 sans-serif; max-width: 32em; ")
                 for n in name_box:
                     if "zdrobnienie" in n.text or "pieszczotliwie" in n.text or "dziecko" in n.text:
+                        diminutive["explenation"] = n.text
                         print(n.text)
                                 
                 print(word, "- rzeczownik, końcówka:", ending)
-                diminutives.append(word)
+                diminutives.append(diminutive)
                 break
 
-        # for ending in adjectives_endings:
-        #     if word.endswith(ending):
-        #         print(word, "- przymiotnik, końcówka:", ending)
-        #         break
+        for ending in adjectives_endings:
+            if word.endswith(ending):
+                diminutive = {}
+                diminutive["word"] = word
+                diminutive["type"] = "przymiotnik"
+                diminutive["ending"] = ending
+                print(word, "- przymiotnik, końcówka:", ending)
+                diminutives.append(diminutive)
+                break
     return diminutives

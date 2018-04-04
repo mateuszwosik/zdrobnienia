@@ -4,7 +4,17 @@
 Znalezione zdrobnienia:</br>
 <ul>
 {% for diminutive in diminutives %}
-    <li> {{ diminutive }} </li>
+    <li>
+        <!--{% for key,val in diminutive.items() %}
+            {{ key }} : {{ val }} </br>
+        {% endfor %}-->
+        <b>Słowo:</b> {{ diminutive['word'] }} </br>
+        <b>Część mowy:</b> {{ diminutive['type'] }} </br>
+        <b>Końcówka:</b> -{{ diminutive['ending'] }} </br>
+        {% if "explenation" in diminutive %}
+        <b>Wyjaśnienie:</b> {{ diminutive['explenation'] }} </br>
+        {% endif %}
+    </li> </br>
 {% endfor %}
 </ul>
 {% endblock %}
