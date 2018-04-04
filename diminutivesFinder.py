@@ -8,7 +8,7 @@ adjectives_endings = ['eńki', 'enieńki', 'uni', 'usi', 'utki', 'uteczki', 'ute
 nouns_ending = ['ek', 'ka', 'ko', 'ik', 'yk', 'czyk', 'ak', 'eńko', 'ułka', 'yczka', 'ina', 'uchna', 'uś', 'usia', 'iś', 'yś', 'unia', 'unio']
 
 def findDiminutives(text):
-    diminutives = []
+    diminutives = {}
     for word in text.split():
         word = word.strip(" \".,?!")
         for ending in nouns_ending:
@@ -17,9 +17,9 @@ def findDiminutives(text):
                 diminutive["word"] = word
                 diminutive["type"] = "rzeczownik"
                 diminutive["ending"] = ending
-                
+
                 quote_page = "https://sjp.pl/" + quote(word)
-                
+
                 print()
                 print(quote_page)
                 page = urlopen(quote_page)
@@ -28,10 +28,25 @@ def findDiminutives(text):
                 for n in name_box:
                     if "zdrobnienie" in n.text or "pieszczotliwie" in n.text or "dziecko" in n.text:
                         diminutive["explenation"] = n.text
+                        diminutive["sjp"] = quote_page
                         print(n.text)
-                                
-                print(word, "- rzeczownik, końcówka:", ending)
-                diminutives.append(diminutive)
+
+                if not "sjp" in diminutive:
+                    quote_page = "https://pl.wiktionary.org/wiki/" + quote(word)
+                    print()
+                    print(quote_page)
+                    try:
+                        page = urlopen(quote_page)
+                        soup = BeautifulSoup(page, 'html.parser')
+                        name_box = soup.findAll('dd')
+                        for n in name_box:
+                            if "zdrobn." in n.text or "pieszczotliwie" in n.text or "dziecko" in n.text:
+                                diminutive["explenation"] = n.text
+                                diminutive["wiki"] = quote_page
+
+                    except:
+                        pass
+                diminutives[word] = diminutive
                 break
 
         for ending in adjectives_endings:
@@ -41,6 +56,6 @@ def findDiminutives(text):
                 diminutive["type"] = "przymiotnik"
                 diminutive["ending"] = ending
                 print(word, "- przymiotnik, końcówka:", ending)
-                diminutives.append(diminutive)
+                diminutives[word] = diminutive
                 break
     return diminutives

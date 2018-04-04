@@ -3,7 +3,7 @@
 {% block body %}
 Znalezione zdrobnienia:</br>
 <ul>
-{% for diminutive in diminutives %}
+{% for k,diminutive in diminutives.items() %}
     <li>
         <!--{% for key,val in diminutive.items() %}
             {{ key }} : {{ val }} </br>
@@ -13,6 +13,9 @@ Znalezione zdrobnienia:</br>
         <b>Końcówka:</b> -{{ diminutive['ending'] }} </br>
         {% if "explenation" in diminutive %}
         <b>Wyjaśnienie:</b> {{ diminutive['explenation'] }} </br>
+        {% endif %}
+        {% if "sjp" in diminutive %}
+        <b>Sjp:</b> {{ diminutive['sjp'] }} </br>
         {% endif %}
     </li> </br>
 {% endfor %}

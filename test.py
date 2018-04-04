@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 adjectives_endings = ['eńki', 'enieńki', 'uni', 'usi', 'utki', 'uteczki', 'utechny', 'uty', 'utenieczki', 'ućki', 'uczki', 'uśki', 'uchny']
 nouns_ending = ['ek', 'ka', 'ko', 'ik', 'yk', 'czyk', 'ak', 'eńko', 'ułka', 'yczka', 'ina', 'uchna', 'uś', 'usia', 'iś', 'yś', 'unia', 'unio']
 
-with open('examples/dziewczynka.txt','r') as f:
+with open('examples/trenVII.txt','r') as f:
     for line in f:
         for word in line.split():
             word = word.strip(" \".,?!")
@@ -22,7 +22,7 @@ with open('examples/dziewczynka.txt','r') as f:
                     for n in name_box:
                         if "zdrobnienie" in n.text or "pieszczotliwie" in n.text:
                             print(n.text)
-                            
+
                     print(word, "- rzeczownik, końcówka:", ending)
                     break
 
