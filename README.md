@@ -29,8 +29,8 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  8. ~~[ ]**-ec** - używane w przeszłości, dziś nie jest odczuwana jako forma zdrobniała, np. kowalec, dębiec~~
  9. ~~[ ]**-ica** - używane w przeszłości, dziś nie jest odczuwana jako forma zdrobniała, np. dziewica, kaplica~~
  10. ~~[ ]**-ic** - używane w przeszłości, dziś nie jest odczuwana jako forma zdrobniała, np. dziedzic, rodzic~~
- 11. [ ] **-ch** - np. Stach
- 12. [ ] **-cha** - np. Kacha
+ 11. ~~[ ] **-ch** - np. Stach~~
+ 12. ~~[ ] **-cha** - np. Kacha~~
  13. [ ] **-isz** - format wyabstrachowany, np. Bronisz
      - [X] Od tego sufiksu wywodzi się bardzo często używany przyrostek: **-iszek**, np. braciszek
      - [ ] Od tego sufiksu wywodzi się mało popularny przyrostek: **-yszek**, np. kamyszek
@@ -71,10 +71,10 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  41. [X] **-utki** - np. milutki
  42. [X] **-uteczki** - np. maluteczki
  43. [X] **-utuchny** - np. malutuchny
- 44. [ ] **-uty** - np. miluty
+ 44. ~~[ ] **-uty** - np. miluty~~
  45. [X] **-utenieczki** - np. starutenieczki
  46. [X] **-ućki** - np. milućki
  47. [X] **-uczki** - np. maluczki
  48. [X] **-uśki** - np. miluśki
- 49. [ ] **-ylki** - np.
+ 49. ~~[ ] **-ylki** - np.~~
  50. [X] **-uchny** - np. bieluchny
