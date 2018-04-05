@@ -4,8 +4,25 @@ from urllib.parse   import quote
 from bs4 import BeautifulSoup
 import io
 
+#TODO:
+#-dodać odmiany przez przypdaki
+#-posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
+#-sprawdzić czy istnieje hasło w sjp i wiki, jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika
 adjectives_endings = ['eńki', 'enieńki', 'uni', 'usi', 'utki', 'uteczki', 'utechny', 'uty', 'utenieczki', 'ućki', 'uczki', 'uśki', 'uchny']
-nouns_ending = ['ek', 'ka', 'ko', 'ik', 'yk', 'czyk', 'ak', 'eńko', 'ułka', 'yczka', 'ina', 'uchna', 'uś', 'usia', 'iś', 'yś', 'unia', 'unio']
+nouns_ending = ['ek', 'ka', 'ko',
+                'ik', #odmiana -ik przez przypadki
+                'ika',
+                'ikowi',
+                'ikiem',
+                'iku',
+                'iki',
+                'icy',
+                'ikowie',
+                'ików',
+                'ikom',
+                'ikami',
+                'ikach', #koniec
+                'yk', 'czyk', 'ak', 'eńko', 'ułka', 'yczka', 'ina', 'uchna', 'uś', 'usia', 'iś', 'yś', 'unia', 'unio']
 
 def findDiminutives(text):
     diminutives = {}
