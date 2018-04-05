@@ -8,7 +8,7 @@ import io
 #-dodać odmiany przez przypdaki
 #-posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
 #-sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników, to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
-#-sprawdzić czy istnieje hasło w sjp i wiki, jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika
+#-sprawdzić czy istnieje hasło w sjp i wiki, jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika !!!!
 #-optymalizacja
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
@@ -63,7 +63,28 @@ adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'uśkimi', #koniec
                       'uchny']
 
-nouns_ending = ['ek', 'ka', 'ko',
+nouns_ending = ['ek', #odmiana -ek przez przypadki
+                'kowi',
+                'kiem',
+                #'ku',
+                #'ki',
+                'ków',
+                'kom',
+                'kami',
+                'kach', #koniec
+                'eczek', #kumulacja -ek
+                'ka',
+                'eczka', #kumulacja -ka ; odmiana -eczka przez przypadki
+                'eczki',
+                'eczce',
+                'eczkę',
+                'eczką',
+                'eczko',
+                'eczkom',
+                'eczkami',
+                'eczkach', #koniec
+                'ko',
+                'eczko', #kumulacja -ko
                 'ik', #odmiana -ik przez przypadki
                 'ika',
                 'ikowi',
@@ -76,7 +97,22 @@ nouns_ending = ['ek', 'ka', 'ko',
                 'ikom',
                 'ikami',
                 'ikach', #koniec
-                'yk', 'czyk', 'ak', 'eńko', 'ułka', 'yczka', 'ina', 'uchna', 'uś', 'usia', 'iś', 'yś', 'unia', 'unio']
+                'yk',
+                'czyk',
+                'iczek', #dalsza odmiana -ik + -ek
+                'yczek', #dalsza odmiana -yk + -ek
+                'ak',
+                'aczek', #dalsza odmiana -ak + -ek
+                'aczyk', #dalsza odmiana -ak + -ik
+                'iszek',
+                'aszek',
+                'uszek',
+                'ątko',
+                'ąteczko',
+                'eńko', 'ułka', 'yczka', 'ina', 'uchna',
+                'uś', 'usia',
+                'iś', 'yś',
+                'unia', 'unio']
 
 def findDiminutives(text):
     diminutives = {}
