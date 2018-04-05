@@ -37,7 +37,29 @@ adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'utcy',
                       'utkich',
                       'utkimi', #koniec
-                      'uteczki', 'utechny', 'uty', 'utenieczki', 'ućki', 'uczki', 'uśki', 'uchny']
+                      'uteczki', 'utechny', 'uty', 'utenieczki', 'ućki',
+                      'uczki', #odmiana -uczki przez przypadki
+                      'uczka',
+                      'uczkie',
+                      'uczkiego',
+                      'uczkiej',
+                      'uczkiemu',
+                      'uczką',
+                      'uczkim',
+                      'uczcy',
+                      'uczkich', #koniec
+                      'uśki', #odmiana -uśki przez przypadki
+                      'uśka',
+                      'uśkie',
+                      'uśkiego',
+                      'uśkiej',
+                      'uśkiemu',
+                      'uśką',
+                      'uśkim',
+                      'uścy',
+                      'uśkich',
+                      'uśkimi', #koniec
+                      'uchny']
 nouns_ending = ['ek', 'ka', 'ko',
                 'ik', #odmiana -ik przez przypadki
                 'ika',
