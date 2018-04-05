@@ -9,6 +9,8 @@ import io
 #-posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
 #-sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników, to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
 #-sprawdzić czy istnieje hasło w sjp i wiki, jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika
+#-optymalizacja
+
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'eńka',
                       'eńkie',
@@ -60,6 +62,7 @@ adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'uśkich',
                       'uśkimi', #koniec
                       'uchny']
+
 nouns_ending = ['ek', 'ka', 'ko',
                 'ik', #odmiana -ik przez przypadki
                 'ika',
