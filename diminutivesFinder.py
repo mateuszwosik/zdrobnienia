@@ -7,8 +7,37 @@ import io
 #TODO:
 #-dodać odmiany przez przypdaki
 #-posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
+#-sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników, to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
 #-sprawdzić czy istnieje hasło w sjp i wiki, jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika
-adjectives_endings = ['eńki', 'enieńki', 'uni', 'usi', 'utki', 'uteczki', 'utechny', 'uty', 'utenieczki', 'ućki', 'uczki', 'uśki', 'uchny']
+adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
+                      'eńka',
+                      'eńkie',
+                      'eńkiego',
+                      'eńkiej',
+                      'eńkiemu',
+                      'eńką',
+                      'eńkim',
+                      'eńcy',
+                      'eńkich',
+                      'eńcy', #koniec
+                      'enieńki', #odmiana -enieńki przez przypadki (CHECK)
+                      'enieńką',
+                      'enieńka',
+                      'enieńkiemu',
+                      'enieńkim', #koniec
+                      'uni', 'usi',
+                      'utki', #odmiana -utki przez przypadki
+                      'utka',
+                      'utkie',
+                      'utkiego',
+                      'utkiej',
+                      'utkiemu',
+                      'utką',
+                      'utkim',
+                      'utcy',
+                      'utkich',
+                      'utkimi', #koniec
+                      'uteczki', 'utechny', 'uty', 'utenieczki', 'ućki', 'uczki', 'uśki', 'uchny']
 nouns_ending = ['ek', 'ka', 'ko',
                 'ik', #odmiana -ik przez przypadki
                 'ika',
@@ -28,16 +57,6 @@ def findDiminutives(text):
     diminutives = {}
     for word in text.split():
         word = word.strip(" \".,?!")
-
-        for ending in adjectives_endings:
-            if word.endswith(ending):
-                diminutive = {}
-                diminutive["word"] = word
-                diminutive["type"] = "przymiotnik"
-                diminutive["ending"] = ending
-                print(word, "- przymiotnik, końcówka:", ending)
-                diminutives[word] = diminutive
-                break
 
         for ending in nouns_ending:
             if word.endswith(ending):
@@ -74,6 +93,16 @@ def findDiminutives(text):
 
                     except:
                         pass
+                diminutives[word] = diminutive
+                break
+
+        for ending in adjectives_endings:
+            if word.endswith(ending):
+                diminutive = {}
+                diminutive["word"] = word
+                diminutive["type"] = "przymiotnik"
+                diminutive["ending"] = ending
+                print(word, "- przymiotnik, końcówka:", ending)
                 diminutives[word] = diminutive
                 break
 
