@@ -11,6 +11,17 @@ def findDiminutives(text):
     diminutives = {}
     for word in text.split():
         word = word.strip(" \".,?!")
+
+        for ending in adjectives_endings:
+            if word.endswith(ending):
+                diminutive = {}
+                diminutive["word"] = word
+                diminutive["type"] = "przymiotnik"
+                diminutive["ending"] = ending
+                print(word, "- przymiotnik, końcówka:", ending)
+                diminutives[word] = diminutive
+                break
+
         for ending in nouns_ending:
             if word.endswith(ending):
                 diminutive = {}
@@ -49,13 +60,23 @@ def findDiminutives(text):
                 diminutives[word] = diminutive
                 break
 
-        for ending in adjectives_endings:
-            if word.endswith(ending):
-                diminutive = {}
-                diminutive["word"] = word
-                diminutive["type"] = "przymiotnik"
-                diminutive["ending"] = ending
-                print(word, "- przymiotnik, końcówka:", ending)
-                diminutives[word] = diminutive
-                break
     return diminutives
+
+def getOnlyDiminutives(diminutives):
+    d = []
+    for k,diminutive in diminutives.items():
+        d.append(diminutive["word"])
+    return d
+
+def getStats(diminutives):
+    n = 0
+    a = 0
+    for k,diminutive in diminutives.items():
+        if diminutive.get("type") == "rzeczownik":
+            n += 1
+        else:
+            a += 1
+    stats = {}
+    stats["nouns"] = n
+    stats["adjectives"] = a
+    return stats

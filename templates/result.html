@@ -1,23 +1,76 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-Znalezione zdrobnienia:</br>
-<ul>
-{% for k,diminutive in diminutives.items() %}
-    <li>
-        <!--{% for key,val in diminutive.items() %}
-            {{ key }} : {{ val }} </br>
-        {% endfor %}-->
-        <b>Słowo:</b> {{ diminutive['word'] }} </br>
-        <b>Część mowy:</b> {{ diminutive['type'] }} </br>
-        <b>Końcówka:</b> -{{ diminutive['ending'] }} </br>
-        {% if "explenation" in diminutive %}
-        <b>Wyjaśnienie:</b> {{ diminutive['explenation'] }} </br>
-        {% endif %}
-        {% if "sjp" in diminutive %}
-        <b>Sjp:</b> {{ diminutive['sjp'] }} </br>
-        {% endif %}
-    </li> </br>
+<div class="container">
+{% for w in text.split() %}
+    {% if w.strip(" \".,?!") in words %}
+        <span style="color:red">{{ w }}</span>
+    {% else %}
+        {{ w }}
+    {% endif %}
 {% endfor %}
-</ul>
+</div></br>
+<hr></br>
+
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h3 class="mb-0">
+                Znalezione zdrobnienia:
+              </h3></br>
+                <ul>
+                    {% for k,diminutive in diminutives.items() %}
+                        <li>
+                            <!--{% for key,val in diminutive.items() %}
+                                {{ key }} : {{ val }} </br>
+                            {% endfor %}-->
+                            <!--lepiej to rozwiazac-->
+                            {% if "explenation" not in diminutive %} 
+                                <span style="color:red">
+                            {% endif %}
+                            <b>Słowo:</b> {{ diminutive['word'] }} </br>
+                            <b>Część mowy:</b> {{ diminutive['type'] }} </br>
+                            <b>Końcówka:</b> -{{ diminutive['ending'] }} </br>
+                            {% if "explenation" in diminutive %}
+                                <b>Wyjaśnienie:</b> {{ diminutive['explenation'] }} </br>
+                                {% if "sjp" in diminutive %}
+                                    <b>SJP:</b> <a href="{{ diminutive['sjp'] }}">{{ diminutive['sjp'] }}</a></br>
+                                {% endif %}
+                                {% if "wiki" in diminutive %}
+                                    <b>Wikisłownik:</b> <a href="{{ diminutive['wiki'] }}">{{ diminutive['wiki'] }}</a></br>
+                                {% endif %}
+                            {% endif %}
+                            {% if "explenation" not in diminutive %} 
+                                </span>
+                            {% endif %}
+                        </li> </br>
+                    {% endfor %}
+                </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h3 class="mb-0">
+                Statystyki:
+              </h3></br>
+              <ul>
+                <li>
+                    <b>Rzeczowniki*:</b> {{ stats['nouns'] }}
+                </li>
+                <li>
+                    <b>Przymiotniki*:</b> {{ stats['adjectives'] }}
+                </li>
+              </ul></br>
+              <h6>
+                  * - ogólne grupy, mogą do nich należeć inne części mowy
+              </h6>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
