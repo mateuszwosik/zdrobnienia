@@ -3,16 +3,32 @@ import urllib
 from urllib.parse   import quote
 from bs4 import BeautifulSoup
 import io
+import collections
+
 
 #TODO:
-#-dodać odmiany przez przypdaki
-#-posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
-#-sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników, to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
-#-sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach) i wiki (strona nie istnieje), jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika !!!! Pierwsze sprawdzić czy należy do zdrobnien później sprawdzić czy słowo istnieje w sjp
-#-dodac tablice z słowami które określają czy słowo jest zabronione i zastąpić tym tego ififa z orami 
-#-dodac do tablicy z słowami zdrobnien dodatkowe słowa, np. Sympatią, młoda, mała 
-#-ograniczyc slowa sparwdzane, musza miec przynajmniej 3 litery
-#-optymalizacja
+# - dodać odmiany przez przypdaki
+
+# [OK] - posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
+
+# [OK] - sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników,
+# to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
+
+# [Częśćiowo] - sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach)
+# i wiki (strona nie istnieje), jeżeli tak i nie należy do zdrobnień, to pominąć
+# je i nie dodawać do słownika !!!! Pierwsze sprawdzić czy należy do zdrobnien
+# później sprawdzić czy słowo istnieje w sjp
+
+# [OK] - dodac tablice z słowami które określają czy słowo jest zabronione i zastąpić tym tego ififa z orami
+
+# [OK] - dodac do tablicy z słowami zdrobnien dodatkowe słowa, np. Sympatią, młoda, mała
+
+# [OK] - ograniczyc slowa sparwdzane, musza miec przynajmniej 3 litery
+
+# - optymalizacja
+
+# [OK] - wyświetlanie słów w poprawnej kolejności
+
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'eńka',
@@ -65,8 +81,7 @@ adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'uśkich',
                       'uśkimi', #koniec
                       'uchny']
-
-nouns_ending = ['ek', #odmiana -ek przez przypadki
+nouns_endings = ['ek', #odmiana -ek przez przypadki
                 'kowi',
                 'kiem',
                 'ku',
@@ -148,59 +163,51 @@ nouns_ending = ['ek', #odmiana -ek przez przypadki
                 'iś', 'yś',
                 'unia', 'unio']
 
+minWordLen = 3
+
+sjpDimunitivesList = ["zdrobnienie", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
+wikiDimunitivesList = ["zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
+
 def findDiminutives(text):
-    diminutives = {}
+    adjectives_endings.sort(key=len, reverse=True)
+    nouns_endings.sort(key=len, reverse=True)
+
+    diminutives = collections.OrderedDict()
+
     for word in text.split():
         word = word.strip(" \".,?!")
+        isAdjective = False
+        if(len(word) >= minWordLen):
+            for ending in adjectives_endings:
+                if word.endswith(ending):
+                    isAdjective = True
+                    diminutive = {}
+                    diminutive["word"] = word
+                    diminutive["type"] = "przymiotnik"
+                    diminutive["ending"] = ending
+                    print(word, "- przymiotnik, końcówka:", ending)
+                    diminutives[word] = diminutive
+                    break
 
-        for ending in nouns_ending:
-            if word.endswith(ending):
-                diminutive = {}
-                diminutive["word"] = word
-                diminutive["type"] = "rzeczownik"
-                diminutive["ending"] = ending
+            if not isAdjective:
+                for ending in nouns_endings:
+                    if word.endswith(ending):
+                        diminutive = {}
+                        diminutive["word"] = word
+                        diminutive["type"] = "rzeczownik"
+                        diminutive["ending"] = ending
+                        print(word, "- rzeczownik, końcówka:", ending)
 
-                quote_page = "https://sjp.pl/" + quote(word)
+                        sjp = searchInSjp(word, diminutive)
 
-                print()
-                print(quote_page)
-                page = urlopen(quote_page)
-                soup = BeautifulSoup(page, 'html.parser')
-                name_box = soup.findAll('p', style="margin: .5em 0; font: medium/1.4 sans-serif; max-width: 32em; ")
-                for n in name_box:
-                    if "zdrobnienie" in n.text or "pieszczotliwie" in n.text or "dziecko" in n.text:
-                        diminutive["explenation"] = n.text
-                        diminutive["sjp"] = quote_page
-                        print(n.text)
+                        if sjp == "Nie jest zdrobnieniem":
+                            continue
 
-                if not "sjp" in diminutive:
-                    quote_page = "https://pl.wiktionary.org/wiki/" + quote(word)
-                    print()
-                    print(quote_page)
-                    try:
-                        page = urlopen(quote_page)
-                        soup = BeautifulSoup(page, 'html.parser')
-                        name_box = soup.findAll('dd')
-                        for n in name_box:
-                            if "zdrobn." in n.text or "pieszczotliwie" in n.text or "dziecko" in n.text:
-                                diminutive["explenation"] = n.text
-                                diminutive["wiki"] = quote_page
+                        if sjp == "Nie występuje w słowniku":
+                            searchInWiki(word, diminutive)
 
-                    except:
-                        pass
-                diminutives[word] = diminutive
-                break
-
-        for ending in adjectives_endings:
-            if word.endswith(ending):
-                diminutive = {}
-                diminutive["word"] = word
-                diminutive["type"] = "przymiotnik"
-                diminutive["ending"] = ending
-                print(word, "- przymiotnik, końcówka:", ending)
-                diminutives[word] = diminutive
-                break
-
+                        diminutives[word] = diminutive
+                        break
     return diminutives
 
 def getOnlyDiminutives(diminutives):
@@ -221,3 +228,45 @@ def getStats(diminutives):
     stats["nouns"] = n
     stats["adjectives"] = a
     return stats
+
+def searchInSjp(word, diminutive):
+    quote_page = "https://sjp.pl/" + quote(word)
+    page = urlopen(quote_page)
+    soup = BeautifulSoup(page, 'html.parser')
+
+    if not isSjpWord(soup):
+        print("Nie występuje w słowniku")
+        return "Nie występuje w słowniku"
+
+    definitions = soup.findAll('p', style="margin: .5em 0; font: medium/1.4 sans-serif; max-width: 32em; ")
+
+    for definition in definitions:
+        for dim in sjpDimunitivesList:
+            if dim in definition.text:
+                diminutive["explenation"] = definition.text
+                diminutive["sjp"] = quote_page
+                return "Jest zdrobnieniem"
+
+    return "Nie jest zdrobnieniem"
+
+def searchInWiki(word, diminutive):
+    quote_page = "https://pl.wiktionary.org/wiki/" + quote(word)
+    try:
+        page = urlopen(quote_page)
+        soup = BeautifulSoup(page, 'html.parser')
+        definitions = soup.findAll('dd')
+        for definition in definitions:
+            for dim in wikiDimunitivesList:
+                if dim in definition.text:
+                    diminutive["explenation"] = definition.text
+                    diminutive["wiki"] = quote_page
+                    print(definition.text)
+    except:
+        pass
+
+def isSjpWord(soup):
+    content = soup.findAll('p')
+    for c in content:
+        if "nie występuje w słowniku" in c.text:
+            return False
+    return True
