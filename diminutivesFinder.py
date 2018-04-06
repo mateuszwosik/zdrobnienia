@@ -11,6 +11,7 @@ import io
 #-sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach) i wiki (strona nie istnieje), jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika !!!! Pierwsze sprawdzić czy należy do zdrobnien później sprawdzić czy słowo istnieje w sjp
 #-dodac tablice z słowami które określają czy słowo jest zabronione i zastąpić tym tego ififa z orami 
 #-dodac do tablicy z słowami zdrobnien dodatkowe słowa, np. Sympatią, młoda, mała 
+#-ograniczyc slowa sparwdzane, musza miec przynajmniej 3 litery
 #-optymalizacja
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
@@ -68,14 +69,26 @@ adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
 nouns_ending = ['ek', #odmiana -ek przez przypadki
                 'kowi',
                 'kiem',
-                #'ku',
-                #'ki',
+                'ku',
+                'ki',
                 'ków',
                 'kom',
                 'kami',
                 'kach', #koniec
-                'eczek', #kumulacja -ek
-                'ka',
+                'eczek', #kumulacja -ek ; odmiana -eczek przez przypadki
+                'eczka',
+                'eczkowi',
+                'eczkiem',
+                'eczku',
+                'eczki',
+                'eczków',
+                'eczkom',
+                'eczkami',
+                'eczkach', #koniec
+                'ka', #odmiana -ka przez przypadki
+                'ce',
+                'kę',
+                'ką', #koniec
                 'eczka', #kumulacja -ka ; odmiana -eczka przez przypadki
                 'eczki',
                 'eczce',
@@ -85,8 +98,8 @@ nouns_ending = ['ek', #odmiana -ek przez przypadki
                 'eczkom',
                 'eczkami',
                 'eczkach', #koniec
-                'ko',
-                'eczko', #kumulacja -ko
+                'ko', #odmiana -ko przez przypadki (juz jest w innych) #koniec
+                'eczko', #kumulacja -ko ; odmiana -eczko przez przypadki (jest juz w innych) #koniec
                 'ik', #odmiana -ik przez przypadki
                 'ika',
                 'ikowi',
@@ -99,8 +112,27 @@ nouns_ending = ['ek', #odmiana -ek przez przypadki
                 'ikom',
                 'ikami',
                 'ikach', #koniec
-                'yk',
+                'yk', #odmiana -yk przez przypadki
+                'yka',
+                'ykowi',
+                'ykiem',
+                'yku',
+                'yki',
+                'yków',
+                'ykom',
+                'ykami',
+                'ykach', #koniec
+                'czyk', #odmiana -czyk przez przypadki
+                'czyka',
+                'czykowi',
                 'czyk',
+                'czykiem',
+                'czyku',
+                'czyki',
+                'czyków',
+                'czykom',
+                'czykami',
+                'czykach', #koniec
                 'iczek', #dalsza odmiana -ik + -ek
                 'yczek', #dalsza odmiana -yk + -ek
                 'ak',
