@@ -8,9 +8,9 @@ import io
 #-dodać odmiany przez przypdaki
 #-posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
 #-sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników, to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
-#-sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach) i wiki (strona nie istnieje), jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika !!!! Pierwsze sprawdzić czy abp należy do zdrobnien później sprawdzić czy słowo istnieje w sjp
+#-sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach) i wiki (strona nie istnieje), jeżeli tak i nie należy do zdrobnień, to pominąć je i nie dodawać do słownika !!!! Pierwsze sprawdzić czy należy do zdrobnien później sprawdzić czy słowo istnieje w sjp
 #-dodac tablice z słowami które określają czy słowo jest zabronione i zastąpić tym tego ififa z orami 
-#-dodac do tablitablicy z słowami zdrobnien dodatkowe słowa, np. Sympatią, młoda, mała 
+#-dodac do tablicy z słowami zdrobnien dodatkowe słowa, np. Sympatią, młoda, mała 
 #-optymalizacja
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
