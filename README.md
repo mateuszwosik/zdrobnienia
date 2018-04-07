@@ -21,7 +21,7 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
     - [X] Może też wystąpić kumulacja dwóch takich samych sufiksów: **-ko + -ko = -eczko**, np. kółeczko
  4. [X] **-ik (-yk)** - np. pistolecik, szewczyk
  5. [X] **-czyk** - powstały z przyrostka -ik poprzez absorpcję z formacji zakończonych na -ec np. chłopczyk, kopczyk
-    - [X] Może też wystąpić dalsza odmiana: **-ik (lub -yk) + -ek = -ieczek (-yczek)**, np. stoliczek, koszyczek
+    - [X] Może też wystąpić dalsza odmiana: **-ik (lub -yk) + -ek = -iczek (-yczek)**, np. stoliczek, koszyczek
  6. [X] **-ak** - (dla określania istot młodych, niedorosłych) np. psiak, kociak, szczeniak, przedszkolak
     - [X] Może też wystąpić dalsza odmiana: **-ak + -ek = -aczek**, np. przedszkolaczek
     - [X] Może też wystąpić dalsza odmiana: **-ak + -ik = -aczyk**, np.
