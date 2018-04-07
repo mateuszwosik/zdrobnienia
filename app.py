@@ -9,8 +9,9 @@ def index():
 
 @app.route('/', methods=['POST'])
 def result():
-    diminutives = findDiminutives(request.form['text'])
-    stats = getStats(diminutives)
+    result = findDiminutives(request.form['text'])
+    diminutives = result["diminutives"]
+    stats = result["stats"]
     words = getOnlyDiminutives(diminutives)
     return render_template('result.html', diminutives = diminutives, text = request.form['text'], stats = stats, words = words)
 

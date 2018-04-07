@@ -330,11 +330,48 @@ nouns_endings = ['ek', #odmiana -ek przez przypadki
                 'ysi',
                 'ysią',
                 'ysię', #koniec
-                'unia', 'unio']
+                'unia', #odmiana -unia przez przypadki
+                'uni',
+                'unię',
+                'unią',
+                'uniu',
+                'unie',
+                'uń',
+                'uniom',
+                'unie',
+                'uniami',
+                'uniach', #koniec
+                'unio', #odmiana -unio przez przypadki
+                'unia',
+                'uniowi',
+                'uniem',
+                'uniowie',
+                'uniów', #koniec
+                'o', #odmiana -o przez przypadki
+                'owi',
+                'em',
+                'u',
+                'ach',
+                'ami',
+                'om',
+                'ów',
+                'owie',
+                'e', #koniec
+                'cio', #odmiana -cio przez przypadki
+                'cia',
+                'ciowi',
+                'ciem',
+                'ciu',
+                'cie',
+                'ciów',
+                'ciom',
+                'ciami',
+                'ciach' #koniec
+                 ]
 
 minWordLen = 3
 
-sjpDimunitivesList = ["zdrobnienie", "zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała", "mały", "małe"]
+sjpDimunitivesList = ["zdrobnienie", "zdrobn.", "zdrobniale", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała", "mały", "małe"]
 #wikiDimunitivesList = ["zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
 
 def findDiminutives(text):
@@ -342,6 +379,9 @@ def findDiminutives(text):
     nouns_endings.sort(key=len, reverse=True)
 
     diminutives = collections.OrderedDict()
+
+    n = 0
+    a = 0
 
     for word in text.split():
         word = word.strip(" \".,?!")
@@ -356,6 +396,7 @@ def findDiminutives(text):
                     diminutive["ending"] = ending
                     print(word, "- przymiotnik, końcówka:", ending)
                     diminutives[word] = diminutive
+                    a += 1
                     break
 
             if not isAdjective:
@@ -376,27 +417,18 @@ def findDiminutives(text):
                             searchInWiki(word, diminutive)
 
                         diminutives[word] = diminutive
+                        n += 1
                         break
-    return diminutives
+    stats = {}
+    stats["nouns"] = n
+    stats["adjectives"] = a
+    return {"diminutives": diminutives, "stats": stats}
 
 def getOnlyDiminutives(diminutives):
     d = []
     for k,diminutive in diminutives.items():
         d.append(diminutive["word"])
     return d
-
-def getStats(diminutives):
-    n = 0
-    a = 0
-    for k,diminutive in diminutives.items():
-        if diminutive.get("type") == "rzeczownik":
-            n += 1
-        else:
-            a += 1
-    stats = {}
-    stats["nouns"] = n
-    stats["adjectives"] = a
-    return stats
 
 def searchInSjp(word, diminutive):
     quote_page = "https://sjp.pl/" + quote(word)
