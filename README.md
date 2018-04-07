@@ -50,8 +50,8 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  23. [X] **-ina** - np. chłopina
  24. [X] **-uchna** - np. morduchna
  25. [X] **-uś, -usia** - np. Maciuś, mamusia
- 26. [ ] **-o** - np. Stasio
- 27. [ ] **-a** - np. ciocia (?)
+ 26. [X] **-o** - np. Stasio
+ 27. [ ] **-a** - np. ciocia
  28. [X] **-iś, -yś** - np. Gabryś
  29. [ ] **-ś, -sia** - np. byś (od byk), Marysia
  30. [ ] **-osia** - np. gosposia
