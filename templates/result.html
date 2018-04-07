@@ -60,7 +60,7 @@
               <ul>
                 <li>
                     <b>Ilość zdrobnień/ilość wyrazów:</b> {{ words|length }}/{{ text.split()|length }}</br>
-                    <b>Procentowo:</b> {{ 100*((words|length)/(text.split()|length))|round(3) }}
+                    <b>Procentowo:</b> {{ (100*((words|length)/(text.split()|length)))|round(1) }}%
                 </li></br>
                 <li>
                     <b>Rzeczowniki*:</b> {{ stats['nouns'] }}
