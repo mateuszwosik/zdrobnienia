@@ -14,7 +14,7 @@ import collections
 # [OK] - sprawdzać pierwsze przymiotniki, później rzeczowniki - jak należy do przymiotników,
 # to przerwać sprawdzanie i nie sprawdzać dla rzeczowników
 
-# [Częśćiowo] - sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach)
+# [OK] - sprawdzić czy istnieje hasło w sjp (dopuszczalne w grach / niedopuszczalne w grach)
 # i wiki (strona nie istnieje), jeżeli tak i nie należy do zdrobnień, to pominąć
 # je i nie dodawać do słownika !!!! Pierwsze sprawdzić czy należy do zdrobnien
 # później sprawdzić czy słowo istnieje w sjp
@@ -25,9 +25,11 @@ import collections
 
 # [OK] - ograniczyc slowa sparwdzane, musza miec przynajmniej 3 litery
 
-# - optymalizacja
+# [ ] - optymalizacja (zadanie na przyszłość - opcjonalne)
 
 # [OK] - wyświetlanie słów w poprawnej kolejności
+
+# [ ] - wypisać i sprawdzić czy nie ma powtórzeń w tablicach z końcówkami
 
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
@@ -148,25 +150,192 @@ nouns_endings = ['ek', #odmiana -ek przez przypadki
                 'czykom',
                 'czykami',
                 'czykach', #koniec
-                'iczek', #dalsza odmiana -ik + -ek
-                'yczek', #dalsza odmiana -yk + -ek
-                'ak',
-                'aczek', #dalsza odmiana -ak + -ek
-                'aczyk', #dalsza odmiana -ak + -ik
-                'iszek',
-                'aszek',
-                'uszek',
+                'iczek', #dalsza odmiana -ik + -ek ; odmiana -iczek przez przypadki
+                'iczka',
+                'iczkowi',
+                'iczkiem',
+                'iczku',
+                'iczki',
+                'iczków',
+                'iczkom',
+                'iczkami',
+                'iczkach', #koniec
+                'yczek', #dalsza odmiana -yk + -ek ; odmiana -yczek przez przypadki
+                'yczka',
+                'yczkowi',
+                'yczkiem',
+                'yczku',
+                'yczki',
+                'yczków',
+                'yczkom',
+                'yczkami',
+                'yczkach', #koniec
+                'ak', #odmiana -ak przez przypadki
+                'aka',
+                'akowi',
+                'akiem',
+                'aku',
+                'aki',
+                'aków',
+                'akom',
+                'akami',
+                'akach', #koniec
+                'aczek', #dalsza odmiana -ak + -ek ; odmiana -aczek przez przypadki
+                'aczka',
+                'aczkowi',
+                'aczkiem',
+                'aczku',
+                'aczki',
+                'aczków',
+                'aczkom',
+                'aczkami',
+                'aczkach', #koniec
+                'aczyk', #dalsza odmiana -ak + -ik ; odmiana -aczyk przez przypadki (jest już w innych) #koniec
+                'iszek', #odmiana -iszek przez przypadki
+                'iszka',
+                'iszkowi',
+                'iszkiem',
+                'iszku',
+                'iszkowie',
+                'iszków',
+                'iszkom',
+                'iszkami',
+                'iszkach',
+                'iszkowie', #koniec
+                'aszek', #odmiana -aszek przez przypadki
+                'aszka',
+                'aszkiem',
+                'aszkowi',
+                'aszku',
+                'aszków',
+                'aszkach',
+                'aszkami',
+                'aszkom',
+                'aszkowie',
+                'aszki', #koniec
+                'uszek', #odmiana -uszek przez przypadki
+                'uszka',
+                'uszkowi',
+                'uszkiem',
+                'uszku',
+                'uszki',
+                'uszków',
+                'uszkom',
+                'uszkami',
+                'uszkach', #koniec
+                'ątko', #odmiana -ątko przez przypadki
+                'ątka',
+                'ątku',
                 'ątko',
-                'ąteczko',
-                'eńko', 'ułka', 'yczka', 'ina', 'uchna',
-                'uś', 'usia',
-                'iś', 'yś',
+                'ątkiem',
+                'ątek',
+                'ątkom',
+                'ątkami',
+                'ątkach', #koniec
+                'ąteczko', #odmiana -ąteczko przez przypadki
+                'ąteczka',
+                'ąteczku',
+                'ąteczkiem',
+                'ąteczek',
+                'ąteczkom',
+                'ąteczkami',
+                'ąteczkach', #koniec
+                'eńko', #odmiana -eńko przez przypadki
+                'eńka',
+                'eńku',
+                'eńko',
+                'eńkiem',
+                'eniek',
+                'eńkom',
+                'eńkami',
+                'eńkach', #koniec
+                'ułka', #odmiana -ułka przez przypadki
+                'ułki',
+                'ułce',
+                'ułkę',
+                'ułką',
+                'ułko',
+                'ułek',
+                'ułkom',
+                'ułkami',
+                'ułkach', #koniec
+                'yczka', #odmiana -yczka przez przypadki
+                'yczki',
+                'yczce',
+                'yczkę',
+                'yczką',
+                'yczko',
+                'yczek',
+                'yczkom',
+                'yczkami',
+                'yczkach', #koniec
+                'ina', #odmiana -ina przez przypadki
+                'iny',
+                'inie',
+                'inę',
+                'iną',
+                'ino',
+                'ini',
+                'inów',
+                'inom',
+                'inami',
+                'inach', #koniec
+                'uchna', #odmiana -uchna przez przypadki
+                'uchny',
+                'uchnie',
+                'uchnę',
+                'uchną',
+                'uchno',
+                'uchny',
+                'uchen',
+                'uchnom',
+                'uchnami',
+                'uchnach', #koniec
+                'uś', #odmiana -uś przez przypadki
+                'usiowi',
+                'usiem',
+                'usiu',
+                'usiach',
+                'usiami',
+                'usiom',
+                'usiów',
+                'usiowie',
+                'usie', #koniec
+                'usia', #omiana -usia przez przypadki
+                'usi',
+                'usię',
+                'usią',
+                'usiom', #koniec
+                'iś', #odmiana -iś przez przypadki
+                'isia',
+                'isiowi',
+                'isiem',
+                'isiu',
+                'isie',
+                'isiów',
+                'isiom',
+                'isiami',
+                'isiach', #koniec
+                'yś', #odmiana -yś przez przypadki
+                'ysia',
+                'ysiowi',
+                'ysiem',
+                'ysiu',
+                'ysiach',
+                'ysiami',
+                'ysiom',
+                'ysiów',
+                'ysiowie',
+                'ysie',
+                'ysi',
+                'ysią',
+                'ysię', #koniec
                 'unia', 'unio']
 
 minWordLen = 3
 
-sjpDimunitivesList = ["zdrobnienie", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
-wikiDimunitivesList = ["zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
+sjpDimunitivesList = ["zdrobnienie", "zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała", "mały", "małe"]
+#wikiDimunitivesList = ["zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
 
 def findDiminutives(text):
     adjectives_endings.sort(key=len, reverse=True)
@@ -256,7 +425,7 @@ def searchInWiki(word, diminutive):
         soup = BeautifulSoup(page, 'html.parser')
         definitions = soup.findAll('dd')
         for definition in definitions:
-            for dim in wikiDimunitivesList:
+            for dim in sjpDimunitivesList:
                 if dim in definition.text:
                     diminutive["explenation"] = definition.text
                     diminutive["wiki"] = quote_page
