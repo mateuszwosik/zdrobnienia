@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container">
 {% for w in text.split() %}
-    {% if w.strip(" \".,?!") in words %}
+    {% if w.strip(" \"„”.,?!():;'") in words %}
         <span style="color:red">{{ w }}</span>
     {% else %}
         {{ w }}
@@ -23,15 +23,19 @@
                 <ul>
                     {% for k,diminutive in diminutives.items() %}
                         <li>
-                            <!--{% for key,val in diminutive.items() %}
-                                {{ key }} : {{ val }} </br>
-                            {% endfor %}-->
-                            <!--lepiej to rozwiazac-->
                             {% if "explenation" not in diminutive %} 
                                 <span style="color:red">
                             {% endif %}
                             <b>Słowo:</b> {{ diminutive['word'] }} </br>
-                            <b>Część mowy:</b> {{ diminutive['type'] }} </br>
+                            <b>Część mowy:</b>
+                                {% if diminutive['type'] == "przymiotnik" %}
+                                    <span style="color:green">
+                                {% endif %}
+                                    {{ diminutive['type'] }}
+                                {% if diminutive['type'] == "przymiotnik" %}
+                                    </span>
+                                {% endif %}
+                                </br>
                             <b>Końcówka:</b> -{{ diminutive['ending'] }} </br>
                             {% if "explenation" in diminutive %}
                                 <b>Wyjaśnienie:</b> {{ diminutive['explenation'] }} </br>

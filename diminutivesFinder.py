@@ -4,10 +4,11 @@ from urllib.parse   import quote
 from bs4 import BeautifulSoup
 import io
 import collections
+import re
 
 
 #TODO:
-# - dodać odmiany przez przypdaki
+# [ ] - dodać wszystkie końcówki i ich odmiany przez przypdaki
 
 # [OK] - posortować od najdłuższych końcówek do najkrutszych ("od szczegółu do ogółu")
 
@@ -28,8 +29,6 @@ import collections
 # [ ] - optymalizacja (zadanie na przyszłość - opcjonalne)
 
 # [OK] - wyświetlanie słów w poprawnej kolejności
-
-# [ ] - wypisać i sprawdzić czy nie ma powtórzeń w tablicach z końcówkami
 
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
@@ -82,7 +81,9 @@ adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'uścy',
                       'uśkich',
                       'uśkimi', #koniec
-                      'uchny']
+                      'uchny',
+                      'uty',
+                      'ylki']
 nouns_endings = ['ek', #odmiana -ek przez przypadki
                 'kowi',
                 'kiem',
@@ -366,12 +367,25 @@ nouns_endings = ['ek', #odmiana -ek przez przypadki
                 'ciów',
                 'ciom',
                 'ciami',
-                'ciach' #koniec
-                 ]
+                'ciach', #koniec
+                'aś', #odmiana -aś przez przypadki
+                'asia',
+                'asiowi',
+                'asiem',
+                'asiu',
+                'asie',
+                'asiowie',
+                'asiów',
+                'asiom',
+                'asiach', #koniec
+                'a', #odmiana -a przez przypadki
+                'ą',
+                'ę' #koniec
+                ]
 
 minWordLen = 3
 
-sjpDimunitivesList = ["zdrobnienie", "zdrobn.", "zdrobniale", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała", "mały", "małe"]
+sjpDimunitivesList = ["zdrobnienie", "zdrobn.", "zdrobniale", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała", "mały", "małe", "niewielkie", "niewiele", "drobnej"]
 #wikiDimunitivesList = ["zdrobn.", "pieszczotliwie", "dziecko", "sympatią", "młoda", "mała"]
 
 def findDiminutives(text):
@@ -384,7 +398,7 @@ def findDiminutives(text):
     a = 0
 
     for word in text.split():
-        word = word.strip(" \".,?!")
+        word = word.strip(" \"„”.,?!():;'")
         isAdjective = False
         if(len(word) >= minWordLen):
             for ending in adjectives_endings:
@@ -441,13 +455,16 @@ def searchInSjp(word, diminutive):
 
     definitions = soup.findAll('p', style="margin: .5em 0; font: medium/1.4 sans-serif; max-width: 32em; ")
 
+    #if not definitions:
+    #    return "Jest zdrobnieniem"
+    #else:
     for definition in definitions:
         for dim in sjpDimunitivesList:
-            if dim in definition.text:
+            if re.findall('\\b' + dim + '\\b', definition.text, flags=re.IGNORECASE): #dim in definition.text:
                 diminutive["explenation"] = definition.text
                 diminutive["sjp"] = quote_page
                 return "Jest zdrobnieniem"
-
+                
     return "Nie jest zdrobnieniem"
 
 def searchInWiki(word, diminutive):
