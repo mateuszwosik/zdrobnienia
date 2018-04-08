@@ -1,5 +1,26 @@
 ﻿{% extends 'layout.html' %}
 
 {% block body %}
-Formularz do zgłoszenia błędu w klasyfikacji zdrobnienia.
+<div class="container">
+    <h4>
+        Formularz do zgłoszenia błędu w klasyfikacji zdrobnienia:
+    </h4>
+</div>
+
+<div class="col-md-8 order-md-1">
+    <form class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="word">Słowo</label>
+            <input type="text" class="form-control" id="word" placeholder="" value="" required>
+        </div></br>
+
+        <div class="mb-3">
+            <label for="comment">Komentarz <span class="text-muted">(opcjonalny)</span></label>
+            <textarea rows="5" cols="50" class="form-control" id="comment"></textarea>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn" type="submit" disabled>Wyślij</button>
+    </form>
+</div>
 {% endblock %}
