@@ -57,7 +57,7 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  30. [ ] **-osia** - np. gosposia
  31. [ ] **-ul, -ula, -ulo** - np. tatul, matula, tatulo
  32. [ ] **-oś** - np. Miłoś
- 33. [ ] **-aś** - np. chłoptaś
+ 33. [X] **-aś** - np. chłoptaś
  34. [ ] **-uń** - np. tatuń
  35. [X] **-unia, -unio** - np. mamunia, tatunio
  36. [ ] **-as** - np. poufale Juras od Jurek
