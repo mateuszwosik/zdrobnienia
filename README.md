@@ -71,10 +71,10 @@ Lista formatów zdrobnień, sufiksów (przyrostków):
  41. [X] **-utki** - np. milutki
  42. [X] **-uteczki** - np. maluteczki
  43. [X] **-utuchny** - np. malutuchny
- 44. ~~[ ] **-uty** - np. miluty~~
+ 44. [X] **-uty** - np. miluty
  45. [X] **-utenieczki** - np. starutenieczki
  46. [X] **-ućki** - np. milućki
  47. [X] **-uczki** - np. maluczki
  48. [X] **-uśki** - np. miluśki
- 49. ~~[ ] **-ylki** - np.~~
+ 49. [X] **-ylki** - np.
  50. [X] **-uchny** - np. bieluchny
