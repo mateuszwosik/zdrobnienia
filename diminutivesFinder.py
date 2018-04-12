@@ -30,6 +30,11 @@ import re
 
 # [OK] - wyświetlanie słów w poprawnej kolejności
 
+# [ ] - tworzyć własny słownik zdrobnień, wyszukane zdrobnienia w tekście
+#zapisywać w pliku (pierwsze sprawdzać czy istnieje w naszym słowniku, jak nie
+#to sprawdzić na internecie i dodać do naszego słownika ; podobnie z słowami,
+#które nie są zdrobnieniami - blacklist)
+
 
 adjectives_endings = ['eńki', #odmiana -eńki przez przypadki
                       'eńka',
@@ -425,7 +430,7 @@ def findDiminutives(text):
                         sjp = searchInSjp(word, diminutive)
 
                         if sjp == "Nie jest zdrobnieniem":
-                            continue
+                            break
 
                         if sjp == "Nie występuje w słowniku":
                             searchInWiki(word, diminutive)
