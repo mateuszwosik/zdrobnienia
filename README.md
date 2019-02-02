@@ -1,6 +1,8 @@
 # zdrobnienia
 Aplikacja do wykrywania zdrobnień w tekście.
 
+### Link do aplikacji: [wyszukiwarkazdrobnien.herokuapp.com](https://wyszukiwarkazdrobnien.herokuapp.com/)
+
 Części mowy ulegające zdrobnienią:
  - rzeczownik - występujące najczęściej, np. domek, bucik;
  - przymiotnik - np. malutki, milutki, miluśki, bielusieńki;
