@@ -1,9 +1,10 @@
 # zdrobnienia
 Aplikacja do wykrywania zdrobnień w tekście.
-
 ### Link do aplikacji: [wyszukiwarkazdrobnien.herokuapp.com](https://wyszukiwarkazdrobnien.herokuapp.com/)
+### Co-author: [Kamil Jurek](https://github.com/kamil-jurek)
 
-Części mowy ulegające zdrobnienią:
+
+#### Części mowy ulegające zdrobnienią:
  - rzeczownik - występujące najczęściej, np. domek, bucik;
  - przymiotnik - np. malutki, milutki, miluśki, bielusieńki;
  - zaimek:
@@ -14,7 +15,7 @@ Części mowy ulegające zdrobnienią:
  - przysłówek - w podobnym stopniu co przymiotnik, np. malutko, bielusieńko;
  - czasownik - bardzo rzadko, zazwyczaj są to formy używane w stosunku do dzieci, np. płakuniać, płakusiać.
 
-Lista formatów zdrobnień, sufiksów (przyrostków):
+#### Lista formatów zdrobnień, sufiksów (przyrostków):
  1. [X] **-ek** - np. kotek, Janek, dyrektorek
     - [X] Może też wystąpić kumulacja dwóch takich samych sufiksów: **-ek + -ek = -eczek**, np. koteczek
  2. [X] **-ka** - np. rączka, Franka, kolumienka
